@@ -12,10 +12,10 @@
 	<tags>chrome browser chromium-embedded</tags>
 	<copyright>Copyright © The CefSharp Authors</copyright>
 	<contentFiles>
-		<files include="..\bin\$PlatformNative$\Release\CefSharp.BrowserSubProcess.NetCore.win-$Platform$.exe" buildAction="None" copyToOuput="true" />
-		<files include="..\bin\$PlatformNative$\Release\CefSharp.BrowserSubprocess.Core.deps.json" buildAction="None" copyToOuput="true" />
-		<files include="..\bin\$PlatformNative$\Release\CefSharp.BrowserSubProcess.NetCore.runtimeconfig.json" buildAction="None" copyToOuput="true" />
-		<files include="..\NetCoreHostRuntime\win-$Platform$\native\nethost.dll" buildAction="None" copyToOuput="true" />
+		<files include="..\bin\$PlatformNative$\Release\CefSharp.BrowserSubProcess.NetCore.win-$Platform$.exe" buildAction="Content" copyToOuput="true" />
+		<files include="..\bin\$PlatformNative$\Release\CefSharp.BrowserSubprocess.Core.deps.json" buildAction="Content" copyToOuput="true" />
+		<files include="..\bin\$PlatformNative$\Release\CefSharp.BrowserSubProcess.NetCore.runtimeconfig.json" buildAction="Content" copyToOuput="true" />
+		<files include="..\NetCoreHostRuntime\win-$Platform$\native\nethost.dll" buildAction="Content" copyToOuput="true" />
 	  </contentFiles>
   </metadata>
  
