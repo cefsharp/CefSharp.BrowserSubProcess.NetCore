@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata minClientVersion="4.0.0">
+    <id>CefSharp.BrowserSubProcess.NetCore.win-$Platform$</id>
+    <version>$version$</version>
+    <authors>The CefSharp Authors</authors>
+    <owners>The CefSharp Authors</owners>
+    <projectUrl>https://github.com/cefsharp/CefSharp.BrowserSubProcess.NetCore</projectUrl>
+    <licenseUrl>https://github.com/cefsharp/CefSharp.BrowserSubProcess.NetCore/blob/master/LICENSE</licenseUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>CefSharp BrowserSubProcess built for .Net Core 3.x</description>
+    <tags>chrome browser chromium-embedded</tags>
+    <copyright>Copyright © The CefSharp Authors</copyright>
+  </metadata>
+  <files>
+    <file src="..\bin\$PlatformNative$\Release\CefSharp.BrowserSubProcess.NetCore.win-$Platform$.exe" target="runtimes\win-$Platform$\lib\netcoreapp3.0"/>
+    <file src="..\bin\$PlatformNative$\Release\CefSharp.BrowserSubprocess.Core.deps.json" target="runtimes\win-$Platform$\lib\netcoreapp3.0"/>
+    <file src="..\bin\$PlatformNative$\Release\CefSharp.BrowserSubProcess.NetCore.runtimeconfig.json" target="runtimes\win-$Platform$\lib\netcoreapp3.0"/>
+    <file src="..\NetCoreHostRuntime\win-$Platform$\native\nethost.dll" target="runtimes\win-$Platform$\lib\netcoreapp3.0"/>
+  </files>
+</package>
+

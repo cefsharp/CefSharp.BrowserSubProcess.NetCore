@@ -34,4 +34,7 @@
     <None Include="CefSharp.BrowserSubprocess.Core.deps.json" />
     <None Include="CefSharp.BrowserSubProcess.NetCore.runtimeconfig.json" />
   </ItemGroup>
+  <ItemGroup>
+    <Manifest Include="app.manifest" />
+  </ItemGroup>
 </Project>
