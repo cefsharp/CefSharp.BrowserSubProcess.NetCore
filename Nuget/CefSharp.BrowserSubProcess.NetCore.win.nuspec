@@ -19,7 +19,7 @@
 	<file src="..\bin\$PlatformNative$\Release\CefSharp.BrowserSubProcess.NetCore.win-$Platform$.exe" target="contentFiles\any\any"/>
 	<file src="..\bin\$PlatformNative$\Release\CefSharp.BrowserSubprocess.Core.deps.json" target="contentFiles\any\any"/>
 	<file src="..\bin\$PlatformNative$\Release\CefSharp.BrowserSubProcess.NetCore.runtimeconfig.json" target="contentFiles\any\any"/>
-	<file src="..\NetCoreHostRuntime\win-$Platform$\native\nethost.dll" target="contentFiles"/>
+	<file src="..\NetCoreHostRuntime\win-$Platform$\native\nethost.dll" target="runtimes\win-$Platform$\native"/>
   </files>
 </package>
 
