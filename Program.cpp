@@ -19,8 +19,6 @@
 
 #include <Windows.h>
 
-#define STR(s) L ## s
-#define CH(c) L ## c
 #define DIR_SEPARATOR L'\\'
 
 using string_t = std::basic_string<char_t>;
@@ -35,6 +33,14 @@ namespace
 	// Forward declarations
 	bool load_hostfxr();
 	load_assembly_and_get_function_pointer_fn get_dotnet_load_assembly(const char_t *assembly);
+}
+
+bool FileExists(string_t szPath)
+{
+	DWORD dwAttrib = GetFileAttributes(szPath.c_str());
+
+	return (dwAttrib != INVALID_FILE_ATTRIBUTES &&
+		!(dwAttrib & FILE_ATTRIBUTE_DIRECTORY));
 }
 
 int __cdecl wmain(int argc, wchar_t *argv[])
@@ -63,7 +69,7 @@ int __cdecl wmain(int argc, wchar_t *argv[])
 	//
 	// STEP 2: Initialize and start the .NET Core runtime
 	//
-	const string_t config_path = root_path + STR("CefSharp.BrowserSubProcess.NetCore.runtimeconfig.json");
+	const string_t config_path = root_path + L"CefSharp.BrowserSubProcess.NetCore.runtimeconfig.json";
 	load_assembly_and_get_function_pointer_fn load_assembly_and_get_function_pointer = nullptr;
 	load_assembly_and_get_function_pointer = get_dotnet_load_assembly(config_path.c_str());
 	assert(load_assembly_and_get_function_pointer != nullptr && "Failure: get_dotnet_load_assembly()");
@@ -71,9 +77,19 @@ int __cdecl wmain(int argc, wchar_t *argv[])
 	//
 	// STEP 3: Load managed assembly and get function pointer to a managed method
 	//
-	const string_t dotnetlib_path = root_path + STR("CefSharp.BrowserSubprocess.Core.dll");
-	const char_t *dotnet_type = STR("CefSharp.BrowserSubprocess.BrowserSubprocessExecutable, CefSharp.BrowserSubprocess.Core");
-	const char_t *dotnet_type_method = STR("MainNetCore");
+	const char_t *dotnet_type = L"CefSharp.BrowserSubprocess.BrowserSubprocessExecutable, CefSharp.BrowserSubprocess.Core";
+	const char_t *dotnet_type_method = L"MainNetCore";
+	string_t dotnetlib_path = root_path + L"CefSharp.BrowserSubprocess.Core.dll";
+
+	//If the dll isn't next to our exe then it's likely we've been deployed
+	//via the Nuget package and are in a folder a few levels depper
+	//So we must go up the folder tree in search of our dll
+	// e.g. runtimes\win-x64\native
+	if (!FileExists(dotnetlib_path))
+	{
+		dotnetlib_path = root_path + L"..\\..\\..\\CefSharp.BrowserSubprocess.Core.dll";
+	}
+
 	// Function pointer to managed delegate
 	component_entry_point_fn mainNetCore = nullptr;
 	int rc = load_assembly_and_get_function_pointer(
