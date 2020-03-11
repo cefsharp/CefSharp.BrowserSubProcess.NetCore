@@ -270,15 +270,8 @@ function Nupkg
 
     Write-Diagnostic "Building nuget package"
 
-    . $nuget pack nuget\CefSharp.BrowserSubProcess.NetCore.win.nuspec -NoPackageAnalysis -Version $Version -OutputDirectory nuget -Properties "RedistVersion=$RedistVersion;Platform=x86;PlatformNative=Win32"
-	. $nuget pack nuget\CefSharp.BrowserSubProcess.NetCore.win.nuspec -NoPackageAnalysis -Version $Version -OutputDirectory nuget -Properties "RedistVersion=$RedistVersion;Platform=x64;PlatformNative=x64"
-
-    # Invoke `AfterBuild` script if available (ie. upload packages to myget)
-    if(-not (Test-Path $WorkingDir\AfterBuild.ps1)) {
-        return
-    }
-
-    . $WorkingDir\AfterBuild.ps1 -Version $Version
+    . $nuget pack nuget\CefSharp.BrowserSubProcess.NetCore.win.nuspec -Verbosity Detailed -Version $Version -OutputDirectory nuget -Properties "RedistVersion=$RedistVersion;Platform=x86;PlatformNative=Win32"
+	. $nuget pack nuget\CefSharp.BrowserSubProcess.NetCore.win.nuspec -Verbosity Detailed -Version $Version -OutputDirectory nuget -Properties "RedistVersion=$RedistVersion;Platform=x64;PlatformNative=x64"
 }
 
 function DownloadNuget()
