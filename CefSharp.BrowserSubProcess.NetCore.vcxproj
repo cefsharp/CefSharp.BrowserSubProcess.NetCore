@@ -134,7 +134,7 @@
       <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;nethost.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <TerminalServerAware>true</TerminalServerAware>
     </Link>
-	<Manifest>
+    <Manifest>
       <AdditionalManifestFiles>app.manifest</AdditionalManifestFiles>
     </Manifest>
   </ItemDefinitionGroup>
@@ -161,7 +161,7 @@
       <LargeAddressAware>true</LargeAddressAware>
       <TerminalServerAware>true</TerminalServerAware>
     </Link>
-	<Manifest>
+    <Manifest>
       <AdditionalManifestFiles>app.manifest</AdditionalManifestFiles>
     </Manifest>
   </ItemDefinitionGroup>
@@ -187,7 +187,7 @@
       <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;nethost.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <TerminalServerAware>true</TerminalServerAware>
     </Link>
-	<Manifest>
+    <Manifest>
       <AdditionalManifestFiles>app.manifest</AdditionalManifestFiles>
     </Manifest>
   </ItemDefinitionGroup>
@@ -198,6 +198,7 @@
     <ClInclude Include="include\coreclr_delegates.h" />
     <ClInclude Include="include\hostfxr.h" />
     <ClInclude Include="include\nethost.h" />
+    <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="CefSharp.BrowserSubprocess.Core.deps.json">
@@ -213,6 +214,9 @@
   </ItemGroup>
   <ItemGroup>
     <Manifest Include="app.manifest" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="CefSharp.BrowserSubProcess.NetCore.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
